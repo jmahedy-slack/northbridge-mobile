@@ -24,7 +24,7 @@ export function Screen({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.cream },
+  safe: { flex: 1, backgroundColor: colors.navyDeep },
   scroll: { flexGrow: 1 },
   inner: { flex: 1, padding: spacing.lg },
 });

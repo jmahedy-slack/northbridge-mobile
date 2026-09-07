@@ -21,7 +21,7 @@ Start from the tagged vulnerable baseline, review the application, then remediat
 | Password | `northbridge-demo` |
 | Account | Northbridge Current Account |
 | Balance | £8,421.63 |
-| Sort code / number | 04-00-04 · 13884921 (fictional) |
+| Sort code / number | 04-00-04 · 13884346 (fictional) |
 
 ## Run the app
 

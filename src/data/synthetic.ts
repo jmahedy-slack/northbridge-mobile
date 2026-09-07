@@ -16,7 +16,7 @@ export const DEMO_ACCOUNT: Account = {
   id: 'acc_nb_current_8841',
   name: 'Northbridge Current Account',
   sortCode: '04-00-04',
-  accountNumber: '13884921',
+  accountNumber: '13884346',
   currency: 'GBP',
   balancePence: 842163,
 };
@@ -24,14 +24,30 @@ export const DEMO_ACCOUNT: Account = {
 export const DEMO_TRANSACTIONS: Transaction[] = [
   {
     id: 'txn_nb_001',
-    merchant: 'Tesco',
+    merchant: 'Tesco Express',
     category: 'Groceries',
-    amountPence: -4218,
-    bookedAt: '2026-09-05T18:42:00.000Z',
+    amountPence: -1450,
+    bookedAt: '2026-09-06T18:42:00.000Z',
     status: 'posted',
   },
   {
     id: 'txn_nb_002',
+    merchant: 'Pret A Manger',
+    category: 'Dining',
+    amountPence: -680,
+    bookedAt: '2026-09-06T12:10:00.000Z',
+    status: 'posted',
+  },
+  {
+    id: 'txn_nb_003',
+    merchant: 'TfL',
+    category: 'Transport',
+    amountPence: -520,
+    bookedAt: '2026-09-05T08:22:00.000Z',
+    status: 'posted',
+  },
+  {
+    id: 'txn_nb_004',
     merchant: 'British Airways',
     category: 'Travel',
     amountPence: -28450,
@@ -39,7 +55,7 @@ export const DEMO_TRANSACTIONS: Transaction[] = [
     status: 'posted',
   },
   {
-    id: 'txn_nb_003',
+    id: 'txn_nb_005',
     merchant: 'Northbridge Payroll',
     category: 'Salary',
     amountPence: 425000,
@@ -47,7 +63,7 @@ export const DEMO_TRANSACTIONS: Transaction[] = [
     status: 'posted',
   },
   {
-    id: 'txn_nb_004',
+    id: 'txn_nb_006',
     merchant: 'Octopus Energy',
     category: 'Electricity',
     amountPence: -9142,

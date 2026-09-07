@@ -22,5 +22,5 @@ export function formatBookedAt(iso: string): string {
 }
 
 export function maskAccountNumber(accountNumber: string): string {
-  return `•••• ${accountNumber.slice(-4)}`;
+  return `**** **** ${accountNumber.slice(-4)}`;
 }
