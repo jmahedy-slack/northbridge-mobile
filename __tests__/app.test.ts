@@ -1,4 +1,4 @@
-import { login, logout, restoreSession, SESSION_STORAGE_KEY, AuthError, resetAuthStateForTests } from '../src/auth/sessionService';
+import { login, logout, restoreSession, SESSION_STORAGE_KEY, AuthError } from '../src/api/auth';
 import { DEMO_ACCESS_TOKEN, DEMO_CUSTOMER, DEMO_LOGIN } from '../src/data/synthetic';
 import { fetchCurrentAccount, fetchTransactions, submitPayment } from '../src/api/banking';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 describe('authentication (baseline)', () => {
   beforeEach(async () => {
     await AsyncStorage.clear();
-    await resetAuthStateForTests();
   });
 
   it('signs in with valid synthetic credentials', async () => {
@@ -36,7 +35,6 @@ describe('authentication (baseline)', () => {
 describe('banking data (baseline)', () => {
   beforeEach(async () => {
     await AsyncStorage.clear();
-    await resetAuthStateForTests();
     await login(DEMO_LOGIN.username, DEMO_LOGIN.password);
   });
 

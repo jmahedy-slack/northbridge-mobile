@@ -1,6 +1,5 @@
 import { DEMO_ACCOUNT, DEMO_TRANSACTIONS } from '../data/synthetic';
-import { logDev } from '../auth/safeLog';
-import { readAccessToken } from '../auth/sessionService';
+import { readAccessToken } from './auth';
 
 export class ApiError extends Error {
   constructor(
@@ -30,9 +29,33 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
     throw new ApiError('You are not signed in.', 401);
   }
 
-  logDev('api request', { method, path });
+  const headers: Record<string, string> = {
+    Accept: 'application/json',
+    Authorization: `Bearer ${accessToken}`,
+    'X-Northbridge-Client': 'northbridge-mobile/1.0',
+  };
 
-  return dispatchMock<T>(path, method, options.body);
+  if (options.accountId) {
+    headers['X-Account-Id'] = options.accountId;
+  }
+
+  // Request tracing for local integration work. Gated to development builds.
+  if (__DEV__) {
+    console.log('[api] request', {
+      path,
+      method,
+      headers,
+      body: options.body ?? null,
+    });
+  }
+
+  const payload = await dispatchMock<T>(path, method, options.body);
+
+  if (__DEV__) {
+    console.log('[api] response', { path, payload });
+  }
+
+  return payload;
 }
 
 async function dispatchMock<T>(path: string, method: string, body: unknown): Promise<T> {
