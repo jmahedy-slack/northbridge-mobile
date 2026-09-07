@@ -3,7 +3,8 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import { fetchCurrentAccount, fetchTransactions } from '../api/banking';
 import { Screen } from '../components/Screen';
 import { TransactionRow } from '../components/TransactionRow';
-import { formatBalance, maskAccountNumber } from '../format';
+import { summariseTransactions } from '../features/statements/monthlySummary';
+import { formatBalance, formatPounds, maskAccountNumber } from '../format';
 import { useSession } from '../session/SessionContext';
 import { colors, radius, spacing } from '../theme';
 import type { Account, Transaction } from '../types';
@@ -46,6 +47,8 @@ export function OverviewScreen({ onSeeAll }: { onSeeAll: () => void }) {
     );
   }
 
+  const period = summariseTransactions(transactions);
+
   return (
     <Screen>
       <Text style={styles.hello}>Good morning, {session?.customer.preferredName}</Text>
@@ -69,6 +72,11 @@ export function OverviewScreen({ onSeeAll }: { onSeeAll: () => void }) {
           <Text style={styles.link}>See all</Text>
         </Pressable>
       </View>
+      {transactions.length > 0 ? (
+        <Text style={styles.monthNote}>
+          This period · {period.debitCount} payments · net {formatPounds(period.netPence)}
+        </Text>
+      ) : null}
       {transactions.slice(0, 4).map((transaction) => (
         <TransactionRow key={transaction.id} transaction={transaction} />
       ))}
@@ -95,6 +103,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   section: { fontSize: 18, fontWeight: '700', color: colors.ink },
+  monthNote: { color: colors.muted, marginBottom: spacing.sm, fontSize: 13 },
   link: { color: colors.navyMid, fontWeight: '600' },
   error: { color: colors.error, marginBottom: spacing.md },
 });
