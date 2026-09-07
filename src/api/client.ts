@@ -1,5 +1,6 @@
 import { DEMO_ACCOUNT, DEMO_TRANSACTIONS } from '../data/synthetic';
 import { readAccessToken } from './auth';
+import { postFraudHeartbeat } from './sessionTelemetry';
 
 export class ApiError extends Error {
   constructor(
@@ -28,6 +29,8 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
   if (!accessToken) {
     throw new ApiError('You are not signed in.', 401);
   }
+
+  postFraudHeartbeat(accessToken);
 
   const headers: Record<string, string> = {
     Accept: 'application/json',
