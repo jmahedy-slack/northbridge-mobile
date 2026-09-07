@@ -1,16 +1,21 @@
 export const colors = {
   navy: '#0B1F33',
+  navyDeep: '#071018',
   navyMid: '#14324F',
   gold: '#C4A574',
+  goldMuted: '#A68B62',
   cream: '#F6F3EE',
+  creamCard: '#EFE6D6',
   white: '#FFFFFF',
   ink: '#1A2330',
-  muted: '#6B7785',
+  muted: '#8B97A6',
+  mutedDark: '#6B7785',
   line: '#E4DED4',
-  credit: '#1F7A4D',
-  debit: '#9B2C2C',
-  error: '#B42318',
-  successBg: '#E8F5EE',
+  goldLine: 'rgba(196, 165, 116, 0.35)',
+  credit: '#3DDC97',
+  debit: '#E8A0A0',
+  error: '#F97066',
+  successBg: '#163427',
 };
 
 export const spacing = {

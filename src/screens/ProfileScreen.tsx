@@ -30,24 +30,20 @@ export function ProfileScreen({ onOpenSecurity }: { onOpenSecurity: () => void }
 }
 
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: '700', color: colors.ink, marginBottom: spacing.lg },
+  title: { fontSize: 24, fontWeight: '700', color: colors.white, marginBottom: spacing.lg },
   card: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.navyMid,
     borderRadius: radius.md,
     padding: spacing.lg,
-    borderWidth: 1,
-    borderColor: colors.line,
     marginBottom: spacing.lg,
   },
-  name: { fontSize: 20, fontWeight: '700', color: colors.ink },
+  name: { fontSize: 20, fontWeight: '700', color: colors.white },
   meta: { color: colors.muted, marginTop: 6 },
   row: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.navyMid,
     borderRadius: radius.md,
     padding: spacing.lg,
-    borderWidth: 1,
-    borderColor: colors.line,
   },
-  rowTitle: { fontSize: 16, fontWeight: '600', color: colors.ink },
+  rowTitle: { fontSize: 16, fontWeight: '600', color: colors.white },
   rowHint: { color: colors.muted, marginTop: 4 },
 });

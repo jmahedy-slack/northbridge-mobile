@@ -24,11 +24,11 @@ export function PrimaryButton({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.navy,
+    backgroundColor: colors.gold,
     borderRadius: radius.md,
     paddingVertical: spacing.md,
     alignItems: 'center',
   },
   disabled: { opacity: 0.45 },
-  label: { color: colors.white, fontSize: 16, fontWeight: '600' },
+  label: { color: colors.navyDeep, fontSize: 16, fontWeight: '700' },
 });

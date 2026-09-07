@@ -19,14 +19,14 @@ export function TransactionsScreen() {
   if (!transactions.length && !error) {
     return (
       <Screen scroll={false}>
-        <ActivityIndicator color={colors.navy} />
+        <ActivityIndicator color={colors.gold} />
       </Screen>
     );
   }
 
   return (
     <Screen>
-      <Text style={{ fontSize: 24, fontWeight: '700', color: colors.ink, marginBottom: 8 }}>
+      <Text style={{ fontSize: 24, fontWeight: '700', color: colors.white, marginBottom: 8 }}>
         Transactions
       </Text>
       <Text style={{ color: colors.muted, marginBottom: 16 }}>Northbridge Current Account</Text>

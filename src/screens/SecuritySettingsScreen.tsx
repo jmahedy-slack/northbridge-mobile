@@ -38,14 +38,12 @@ function Row({ label, value, last }: { label: string; value: boolean; last?: boo
 }
 
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: '700', color: colors.ink },
+  title: { fontSize: 24, fontWeight: '700', color: colors.white },
   lede: { color: colors.muted, marginTop: 8, marginBottom: spacing.lg },
   card: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.navyMid,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.line,
     marginBottom: spacing.lg,
   },
   row: {
@@ -54,8 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: spacing.md,
   },
-  rowBorder: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.line },
-  rowLabel: { color: colors.ink, flex: 1, paddingRight: spacing.md },
-  section: { fontWeight: '700', color: colors.ink, marginTop: spacing.md },
+  rowBorder: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.goldLine },
+  rowLabel: { color: colors.white, flex: 1, paddingRight: spacing.md },
+  section: { fontWeight: '700', color: colors.white, marginTop: spacing.md },
   meta: { color: colors.muted, marginTop: 6, marginBottom: 4 },
 });

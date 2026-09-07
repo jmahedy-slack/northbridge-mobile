@@ -2,7 +2,7 @@
  * Local demonstration flags. These do not call a remote config service.
  */
 export const featureFlags = {
-  showSalaryOnOverview: true,
+  showSalaryOnOverview: false,
   allowSimulatedPayments: true,
   persistSessionAcrossLaunches: true,
 } as const;

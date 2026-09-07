@@ -80,25 +80,31 @@ function Field({
   return (
     <View style={styles.field}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput value={value} onChangeText={onChange} style={styles.input} keyboardType={keyboardType} />
+      <TextInput
+        value={value}
+        onChangeText={onChange}
+        style={styles.input}
+        keyboardType={keyboardType}
+        placeholderTextColor={colors.muted}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: '700', color: colors.ink },
+  title: { fontSize: 24, fontWeight: '700', color: colors.white },
   lede: { color: colors.muted, marginTop: 6, marginBottom: spacing.lg },
   field: { marginBottom: spacing.md },
   label: { color: colors.muted, marginBottom: 6, fontSize: 13 },
   input: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.navyMid,
     borderRadius: radius.sm,
     borderWidth: 1,
-    borderColor: colors.line,
+    borderColor: colors.navyMid,
     paddingHorizontal: spacing.md,
     paddingVertical: 12,
     fontSize: 16,
-    color: colors.ink,
+    color: colors.white,
   },
   error: { color: colors.error, marginBottom: spacing.sm },
   success: { color: colors.credit, marginBottom: spacing.sm },

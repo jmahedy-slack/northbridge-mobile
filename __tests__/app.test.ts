@@ -47,7 +47,9 @@ describe('banking data (baseline)', () => {
   it('returns the seeded transactions', async () => {
     const transactions = await fetchTransactions();
     expect(transactions.map((txn) => txn.merchant)).toEqual([
-      'Tesco',
+      'Tesco Express',
+      'Pret A Manger',
+      'TfL',
       'British Airways',
       'Northbridge Payroll',
       'Octopus Energy',
