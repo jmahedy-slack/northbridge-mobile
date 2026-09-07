@@ -13,14 +13,10 @@ App
 
 ## Session
 
-Login talks to an in-app mock identity helper (`src/api/auth.ts`). The returned session blob is persisted so Expo Go can skip the login screen on the next launch.
+Login talks to an in-app mock identity helper (`src/auth/sessionService.ts`, re-exported from `src/api/auth.ts`). Only the access token is persisted, and only via `expo-secure-store` (`WHEN_UNLOCKED_THIS_DEVICE_ONLY`). Customer profile data stays in memory. Leftover `northbridge.session` AsyncStorage blobs are deleted on login, restore, and logout.
 
-API calls read that session and attach an `Authorization` header inside `src/api/client.ts`.
+API calls read that token inside `src/api/client.ts`. Banking responses are local mocks — the client does not POST credentials to a network collector, and it does not disable TLS verification.
 
 ## Data
 
 Customer, account and transactions live in `src/data/synthetic.ts`. Nothing in this tree is a real Northbridge customer.
-
-## Follow-ups
-
-A later change may introduce a dedicated auth module and tighten what is written to device storage and logs. That work is not in this commit.
