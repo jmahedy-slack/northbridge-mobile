@@ -21,14 +21,6 @@ export function OverviewScreen({ onSeeAll }: { onSeeAll: () => void }) {
         if (cancelled) return;
         setAccount(nextAccount);
         setTransactions(nextTransactions);
-        if (__DEV__) {
-          console.log('[overview] loaded customer book', {
-            customerId: session?.customer.id,
-            accountId: nextAccount.id,
-            balancePence: nextAccount.balancePence,
-            transactionIds: nextTransactions.map((txn) => txn.id),
-          });
-        }
       })
       .catch((err: unknown) => {
         if (!cancelled) setError(err instanceof Error ? err.message : 'Unable to load account.');
