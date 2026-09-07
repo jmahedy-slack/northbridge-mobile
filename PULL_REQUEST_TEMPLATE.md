@@ -35,6 +35,8 @@
 - [ ] No real credentials or customer data added
 - [ ] Tokens are not written to AsyncStorage
 - [ ] Tokens and account payloads are not logged
+- [ ] Tokens are not posted over cleartext HTTP
+- [ ] TLS certificate verification is not disabled
 - [ ] Authentication is centralised behind a storage abstraction
 - [ ] Logout removes the persisted session
 - [ ] Unit tests cover the security invariants

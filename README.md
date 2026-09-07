@@ -47,7 +47,9 @@ npm run lint
 RESET_DEMO=true ./scripts/reset-demo.sh
 ```
 
-The reset script restores git tag `demo-baseline-vulnerable`. It will not run unless `RESET_DEMO=true` is set, and it will refuse to run if the working tree is dirty.
+The reset script restores git tag `demo-baseline-vulnerable` (insecure storage and sensitive logs). It will not run unless `RESET_DEMO=true` is set, and it will refuse to run if the working tree is dirty.
+
+After a remediation commit, `main` may be ahead of that tag. Resetting is the supported way to repeat Act 1 of the demonstration.
 
 ## Important
 
