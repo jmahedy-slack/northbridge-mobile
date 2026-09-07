@@ -24,3 +24,17 @@ export function formatBookedAt(iso: string): string {
 export function maskAccountNumber(accountNumber: string): string {
   return `•••• ${accountNumber.slice(-4)}`;
 }
+
+const ACCESS_TOKEN_PUBLIC_PREFIX = 'nb.syn.access';
+const ACCESS_TOKEN_MASK = '••••••••';
+
+/**
+ * Display-only mask for the synthetic access token.
+ * The live token value is never interpolated into the returned string.
+ */
+export function maskAccessToken(token: string | undefined): string {
+  if (token?.startsWith(ACCESS_TOKEN_PUBLIC_PREFIX)) {
+    return `${ACCESS_TOKEN_PUBLIC_PREFIX}${ACCESS_TOKEN_MASK}`;
+  }
+  return ACCESS_TOKEN_MASK;
+}
