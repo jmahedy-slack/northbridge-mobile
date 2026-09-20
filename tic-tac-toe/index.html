@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tic Tac Toe · Code channel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="titlebar">
+        <div class="dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="filename">tic-tac-toe.ts — code channel</p>
+      </header>
+
+      <section class="intro">
+        <p class="kicker">// playable in this channel</p>
+        <h1>Tic Tac Toe</h1>
+        <p class="lede">Take turns as X and O. Play a friend locally, or challenge the unbeatable minimax bot.</p>
+      </section>
+
+      <section class="toolbar" aria-label="Game mode">
+        <div class="segmented" role="group" aria-label="Opponent">
+          <button type="button" id="mode-ai" class="seg is-active">vs AI</button>
+          <button type="button" id="mode-local" class="seg">2 players</button>
+        </div>
+        <div class="score" aria-label="Score">
+          <span><b id="score-x">0</b> X</span>
+          <span><b id="score-draw">0</b> draw</span>
+          <span><b id="score-o">0</b> O</span>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status">Your move. You are X.</p>
+
+      <section class="board-wrap">
+        <div id="board" class="board" role="grid" aria-label="Tic tac toe board"></div>
+      </section>
+
+      <div class="actions">
+        <button type="button" id="new-round" class="btn primary">New round</button>
+        <button type="button" id="reset-scores" class="btn">Reset scores</button>
+      </div>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
