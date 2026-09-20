@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Space Invaders · Code channel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="titlebar">
+        <div class="dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="filename">space-invaders.ts — code channel</p>
+      </header>
+
+      <section class="intro">
+        <p class="kicker">// playable in this channel</p>
+        <h1>Space Invaders</h1>
+        <p class="lede">
+          Defend the code channel. Arrow keys or A/D to move, space to fire. Clear the formation before it lands.
+        </p>
+      </section>
+
+      <section class="hud" aria-label="Score">
+        <div><span class="label">score</span> <b id="score">0000</b></div>
+        <div><span class="label">wave</span> <b id="wave">1</b></div>
+        <div><span class="label">lives</span> <b id="lives">3</b></div>
+      </section>
+
+      <section class="stage">
+        <canvas id="game" width="480" height="640" aria-label="Space Invaders playfield"></canvas>
+        <div id="overlay" class="overlay">
+          <p class="overlay-kicker">ready player one</p>
+          <h2 id="overlay-title">Insert coin</h2>
+          <p id="overlay-copy">Press Start or tap the playfield to begin.</p>
+          <button type="button" id="start" class="btn primary">Start</button>
+        </div>
+      </section>
+
+      <div class="controls" aria-label="Touch controls">
+        <button type="button" id="left" class="btn pad">←</button>
+        <button type="button" id="fire" class="btn primary pad">Fire</button>
+        <button type="button" id="right" class="btn pad">→</button>
+      </div>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
