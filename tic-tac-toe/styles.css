@@ -1,5 +1,5 @@
 :root {
-  --bg: #0e1116;
+  --bg: #1f8a3c;
   --panel: #161b22;
   --panel-2: #1c2330;
   --line: #30363d;
@@ -21,8 +21,8 @@ body {
   margin: 0;
   min-height: 100%;
   background:
-    radial-gradient(1200px 600px at 10% -10%, #1b4f72 0%, transparent 50%),
-    radial-gradient(900px 500px at 110% 10%, #3d1d2a 0%, transparent 46%),
+    radial-gradient(1200px 600px at 10% -10%, #4caf50 0%, transparent 50%),
+    radial-gradient(900px 500px at 110% 10%, #14532d 0%, transparent 46%),
     var(--bg);
   color: var(--text);
   font-family: 'IBM Plex Sans', sans-serif;
