@@ -192,6 +192,8 @@ canvas {
   flex: 1;
   min-height: 48px;
   font-size: 18px;
+  touch-action: none;
+  user-select: none;
 }
 
 .btn:hover {

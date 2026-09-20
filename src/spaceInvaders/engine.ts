@@ -15,9 +15,10 @@ export const INVADER_ORIGIN_Y = 80;
 export const INVADER_STEP_X = 10;
 export const INVADER_DROP = 18;
 export const BULLET_WIDTH = 3;
-export const BULLET_HEIGHT = 12;
+export const PLAYER_BULLET_WIDTH = 6;
+export const BULLET_HEIGHT = 14;
 export const PLAYER_BULLET_SPEED = -420;
-export const ALIEN_BULLET_SPEED = 190;
+export const ALIEN_BULLET_SPEED = 150;
 export const MARGIN = 16;
 export const POINTS = [10, 20, 30] as const;
 export const MYSTERY_POINTS = 100;
@@ -152,7 +153,7 @@ export function createGame(options?: { seed?: number; lives?: number; wave?: num
     direction: 1,
     moveAcc: 0,
     alienShotAcc: 0,
-    alienShotEvery: 0.9,
+    alienShotEvery: 1.4,
     mysteryAcc: 0,
     mysteryEvery: 9,
     seed,
@@ -295,9 +296,9 @@ export function step(state: GameState, input: Input, dt: number): GameState {
   }
   if (input.fire && !playerBullet(state) && state.player.cooldown <= 0) {
     state.bullets.push({
-      x: state.player.x + state.player.w / 2 - BULLET_WIDTH / 2,
+      x: state.player.x + state.player.w / 2 - PLAYER_BULLET_WIDTH / 2,
       y: state.player.y - BULLET_HEIGHT,
-      w: BULLET_WIDTH,
+      w: PLAYER_BULLET_WIDTH,
       h: BULLET_HEIGHT,
       vy: PLAYER_BULLET_SPEED,
       from: 'player',

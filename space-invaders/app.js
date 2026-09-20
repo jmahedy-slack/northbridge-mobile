@@ -82,6 +82,7 @@ const stars = Array.from({ length: 48 }, (_, i) => ({
 
 const input = { left: false, right: false, fire: false };
 const keys = new Set();
+const held = { left: false, right: false, fire: false };
 
 let state = createGame({ seed: Date.now() % 100000 });
 let running = false;
@@ -153,8 +154,16 @@ function render() {
   }
 
   for (const bullet of state.bullets) {
-    ctx.fillStyle = bullet.from === 'player' ? '#7ee787' : '#ffa198';
-    ctx.fillRect(bullet.x, bullet.y, bullet.w, bullet.h);
+    if (bullet.from === 'player') {
+      ctx.fillStyle = '#b6f0bd';
+      ctx.shadowColor = '#7ee787';
+      ctx.shadowBlur = 10;
+      ctx.fillRect(bullet.x, bullet.y, bullet.w, bullet.h);
+      ctx.shadowBlur = 0;
+    } else {
+      ctx.fillStyle = '#ffa198';
+      ctx.fillRect(bullet.x, bullet.y, bullet.w, bullet.h);
+    }
   }
 
   if (state.player.alive) {
@@ -176,6 +185,8 @@ function hideOverlay() {
   overlay.classList.add('is-hidden');
 }
 
+canvas.setAttribute('tabindex', '0');
+
 function startGame() {
   state = createGame({ seed: Date.now() % 100000 });
   prevScore = 0;
@@ -183,6 +194,7 @@ function startGame() {
   running = true;
   hideOverlay();
   syncHud();
+  canvas.focus();
   beep(220, 0.08, 'square', 0.03);
   beep(440, 0.12, 'square', 0.03);
 }
@@ -194,9 +206,9 @@ function endGame() {
 }
 
 function updateInput() {
-  input.left = keys.has('ArrowLeft') || keys.has('a') || keys.has('A');
-  input.right = keys.has('ArrowRight') || keys.has('d') || keys.has('D');
-  input.fire = keys.has(' ') || keys.has('ArrowUp') || keys.has('w') || keys.has('W');
+  input.left = held.left || keys.has('ArrowLeft') || keys.has('a') || keys.has('A');
+  input.right = held.right || keys.has('ArrowRight') || keys.has('d') || keys.has('D');
+  input.fire = held.fire || keys.has(' ') || keys.has('ArrowUp') || keys.has('w') || keys.has('W');
 }
 
 function tick(ts) {
@@ -223,18 +235,22 @@ function tick(ts) {
   requestAnimationFrame(tick);
 }
 
-function bindHold(button, key) {
-  const on = () => keys.add(key);
-  const off = () => keys.delete(key);
-  button.addEventListener('pointerdown', (event) => {
+function bindHold(button, which) {
+  const on = (event) => {
     event.preventDefault();
+    if (!running) startGame();
+    held[which] = true;
     button.setPointerCapture(event.pointerId);
-    on();
     updateInput();
-  });
+  };
+  const off = () => {
+    held[which] = false;
+    updateInput();
+  };
+  button.addEventListener('pointerdown', on);
   button.addEventListener('pointerup', off);
+  button.addEventListener('lostpointercapture', off);
   button.addEventListener('pointercancel', off);
-  button.addEventListener('pointerleave', off);
 }
 
 window.addEventListener('keydown', (event) => {
@@ -255,13 +271,27 @@ window.addEventListener('keyup', (event) => {
 });
 
 startBtn.addEventListener('click', startGame);
-canvas.addEventListener('click', () => {
-  if (!running) startGame();
+canvas.addEventListener('pointerdown', (event) => {
+  event.preventDefault();
+  if (!running) {
+    startGame();
+    return;
+  }
+  held.fire = true;
+  updateInput();
+});
+canvas.addEventListener('pointerup', () => {
+  held.fire = false;
+  updateInput();
+});
+canvas.addEventListener('pointercancel', () => {
+  held.fire = false;
+  updateInput();
 });
 
-bindHold(document.getElementById('left'), 'ArrowLeft');
-bindHold(document.getElementById('right'), 'ArrowRight');
-bindHold(document.getElementById('fire'), ' ');
+bindHold(document.getElementById('left'), 'left');
+bindHold(document.getElementById('right'), 'right');
+bindHold(document.getElementById('fire'), 'fire');
 
 syncHud();
 render();

@@ -155,8 +155,8 @@ describe('space invaders engine', () => {
   it('uses a seeded RNG so alien fire is deterministic', () => {
     const a = createGame({ seed: 42 });
     const b = createGame({ seed: 42 });
-    run(a, idle, 1);
-    run(b, idle, 1);
+    run(a, idle, 1.6);
+    run(b, idle, 1.6);
     expect(a.bullets.map((bullet) => [bullet.x, bullet.y, bullet.from, bullet.vy])).toEqual(
       b.bullets.map((bullet) => [bullet.x, bullet.y, bullet.from, bullet.vy]),
     );
